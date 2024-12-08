@@ -1,0 +1,16 @@
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!-- hardcode urls -->
+        <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
+
+        <!--  using the name argument in the path() function in the polls.urls module-->
+        <!--  'detail' instead of 'polls:details' -->
+
+        <!-- Adding namespaces - see urls app_name -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
